@@ -15,6 +15,13 @@
     font-size: 40px;
     margin-right: 50px;
   }
+
+  #icon{
+    background: #3E403F;
+    color: lightgrey;
+    padding: 10px;
+    margin-right: 10px;
+  }
   
   img{
     width: 50px;
@@ -31,9 +38,9 @@
   }
   
   .sidebar{
-    width: 240px;
+    width: 250px;
     height: 100%;
-    background: gray;
+    background: #292D2E;
     padding: 30px 0px;
     position: fixed;
   }
@@ -76,24 +83,25 @@
   }
 
   .drop-menu{
-    padding: 0;
-    display: block;
-  }
-
-  .drop-item{
-    background: palegoldenrod;
-    padding: 0;
+    display: none;
+    background: #3E403F;
+    line-height: 20px;
   }
 
   .wrapper .sidebar .search-box input{
     width: 90%;
     background: lightgray;
-  }
-  .row{
-    padding: 15px;
-  }    
+  }  
   
+  .wrapper .sidebar ul li{
+    padding-top: 20px;
+    line-height: 30px;
+    color: white;
+  }
+
   .wrapper .sidebar ul li a{
+    
+    padding-left: 20px;
     color: white;
   }
   
@@ -102,13 +110,6 @@
     padding-right: 10px;
  }
   
-  .wrapper .sidebar ul li:hover{
-    background-color: lightgray;
-  }
-      
-  .wrapper .sidebar ul li:hover a{
-    color: #fff;
-  }
    
  .bot-icons{
     width: 100%;
@@ -120,7 +121,7 @@
   .wrapper .sidebar .bot-icons a{
     display: block;
     width: 100%;
-    background: darkgray;
+    background: black;
     height: 40px;
     line-height: 45px;
     text-align: center;
@@ -152,7 +153,7 @@
   }
   
   .subheader{
-    font-size: 15px;
+    font-size: 12px;
   }
   
   .path{
@@ -164,7 +165,7 @@
   }
 
   .button-bar{
-    background: lightgray;
+    background: #E8ECEF;
     margin-top: 50px;
     
   }
@@ -225,10 +226,4 @@
 
   .table-button{
     background: black;
-  }
-
-  @media (max-height: 500px){
-    .social_media{
-      display: none !important;
-    }
   }
