@@ -44,7 +44,8 @@ class Db{
                 "<td>////</td>".
                 "<td>".$row["date_of_birth"]."</td>".
                 "<td>".$row["GENDER"]."</td>".
-                "<td><button class=\"table-button\">Pregled</button></td>".
+                "<td><form method=\"POST\" action=\"pregled.php?2\">
+                <button class=\"table-button\" value=\"".$row['id']."\" name=\"" .$row['id'] ."\">Pregled</button></form></td>".
                 "</tr>";
 
         }

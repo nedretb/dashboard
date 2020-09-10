@@ -1,5 +1,6 @@
 <?php 
-    include "db.php";
+    require('users.php');
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,61 +57,51 @@
     <div class="main_content">
         <div class="header">
           <div class="main-page-icon"><i class="fas fa-procedures" id="main-content-icon"></i></div>
-          <div>Pregled svih pacijenata
-            <div class="subheader">Sve informacije o pacijentima na jednom mjestu. Vrsite pretrazivanje, pregled i izvoz podataka.</div>
+          <div>Pregled korisnika
+            <div class="subheader">Update or delete user</div>
           </div>
           <div class="path">
             <a href="#"><i class="fas fa-home"></i>Naslovna strana </a>/
             <a href="#">Svi pacijenti</a>
           </div>
         </div>
-        <div class="button-bar">
-          <div class="buts">
-            <button style="background: green;"><i class="fas fa-plus"></i>Novi filter</button>
-            <button style="background: gray;"><i class="fas fa-columns"></i>Kolone<i class="fas fa-caret-right"></i></button>
-            <button style="background: blue;"><i class="fas fa-bars"></i>Pregled</button>
-            <button style="background: gray;"><i class="fas fa-file-excel"></i>Excel<i class="fas fa-caret-right"></i></button>
-            <div class="select">Ukupno 2 prikazi
-              <select>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="40">40</option>
-              </select>
+        <?php
+            $counter = 0;
+            while(!isset($_POST[strval($counter)])){
+                $counter++;
+            }
+            $id = $_POST[strval($counter)];
+            //echo $id;
+            $x= new Users();
+            $x->selectUser($id);
+            $_SESSION['x'] = $x;
+        ?>
+        <form method="POST" action="update_delete.php">
+            <div style="display: none;">
+                <div>ID: <?php echo $x->db_id?></div>
+                <input class="form-update" type="text" name="none">
+             </div>
+            <div class="form-group">
+                <div>Full Name: <?php echo $x->fullname?></div>
+                <input class="form-update" type="text" name="fullname">
             </div>
-          </div>
-          <div class="test">
-              <i class="fas fa-times" style="color: red;"></i>
-              <select>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="40">40</option>
-              </select><input type="text">
-          </div>
-        </div>
-        <div class="table">
-          <table>
-            <tr>
-              <th>#</th>
-              <th>Ime i prezime</th>
-              <th>JMB</th>
-              <th>Broj dokumenta</th>
-              <th>Godina rodjena</th>
-              <th>Spol</th>
-              <th>Akcije</th>
-            </tr>
-            <tr><?php
-                $entrie = new Db();
-                $entrie->select();
-
-                if(isset($_POST['2'])){
-                    $id = $_POST['name'];
-                }
-            ?></tr>
-          </table>
-        </div>
-    </div>  
+            <div class="form-group">
+                <div>JMB: <?php echo $x->id_no?></div>
+                <input class="form-update" type="text" name="jmb">
+            </div>
+            <div class="form-group">
+                <div>Date Of Birth: <?php echo $x->dob?></div>
+                <input class="form-update" type="date" name="dob">
+            </div>
+            <div class="form-group">
+                <div>Gender: <?php echo $x->gender?></div>
+                <input class="form-update" type="number" name="gender">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="update-button" value="update" name="update">
+                <input type="submit" class="delete-button" value="delete" name="delete">
+            </div>
+        </form>
     </div>
   </div>
 </div>

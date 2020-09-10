@@ -64,7 +64,7 @@
             <a href="#">Svi pacijenti</a>
           </div>
         </div>
-        <form action="users.php" method="POST">
+        <form action="update.php" method="POST">
             <div class="form-group">
                 <label>Ime i prezime</label>
                 <input class="form-control" type="text" name="fullname">
